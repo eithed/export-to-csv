@@ -12,5 +12,10 @@
     "require": {
         "laravel/nova": "~3.0",
         "parsecsv/php-parsecsv": "~1.2"
-    }
+    },
+    "autoload": {
+        "psr-4": {
+          "Eithed\\ExportToCsv\\": "ExportToCsv"
+        }
+      },
 }

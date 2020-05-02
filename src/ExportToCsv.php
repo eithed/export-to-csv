@@ -1,6 +1,6 @@
 <?php
 
-namespace Eithed;
+namespace Eithed\ExportToCsv;
 
 use Illuminate\Bus\Queueable;
 use Laravel\Nova\Actions\Action;
