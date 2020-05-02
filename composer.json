@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "laravel/nova": "~3.0.0",
-        "parsecsv/php-parsecsv": "~1.2.0"
+        "laravel/nova": "~3.0",
+        "parsecsv/php-parsecsv": "~1.2"
     }
 }
