@@ -1,7 +1,7 @@
 ExportToCsv Action for Laravel Nova
 ================================
 
-Exports given view to a CSV filed, be it Laravel Lens or Resource
+Exports given view (be it Laravel Lens or Resource) to a CSV file
 
 Installation
 ------------
