@@ -59,8 +59,8 @@ class ExportToCsv extends Action implements ShouldQueue
 
         $csv->data = $models->map(function ($model) use ($lens_fields) {
             return $lens_fields->map(function ($lens_field) use ($model) {
-                // have to clone lens field; otherwise, because we would be doing
-                // assignment via reference, if resolveForDisplay would return null
+                // have to clone lens field; otherwise, because resolve sets value on field
+                // we would be doing assignment via reference, and, if resolveForDisplay would return null
                 // then the $field->value would keep value for previous row
                 $field = clone $lens_field;
 
@@ -79,7 +79,7 @@ class ExportToCsv extends Action implements ShouldQueue
             mkdir($path, 0777, true);
         }
 
-        $csv->save($this->path);
+        $csv->save($this->path, $csv->data, true);
 
         return $csv;
     }
