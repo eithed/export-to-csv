@@ -14,7 +14,6 @@ Usage
 Within your view, per Nova documentation use the action:
 
 ```php
-
     public function actions(Request $request)
     {
         return [
@@ -32,7 +31,6 @@ Customization
 If a custom job needs to be run after export has finished you'll need to extend this class as such:
 
 ```php
-
     namespace App\Nova\Actions;
 
     use App\Jobs\NotifyUserOfCompletedExport;
