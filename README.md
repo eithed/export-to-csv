@@ -14,12 +14,12 @@ Usage
 Within your view, per Nova documentation use the action:
 
 ```php
-    public function actions(Request $request)
-    {
-        return [
-            new Eithed\ExportToCsv($this),
-        ];
-    }
+public function actions(Request $request)
+{
+    return [
+        new Eithed\ExportToCsv($this),
+    ];
+}
 
 ```
 
@@ -31,17 +31,17 @@ Customization
 If a custom job needs to be run after export has finished you'll need to extend this class as such:
 
 ```php
-    namespace App\Nova\Actions;
+namespace App\Nova\Actions;
 
-    use App\Jobs\NotifyUserOfCompletedExport;
+use App\Jobs\NotifyUserOfCompletedExport;
 
-    class ExportToCsv extends \Eithed\ExportToCsv\ExportToCsv
+class ExportToCsv extends \Eithed\ExportToCsv\ExportToCsv
+{
+    protected function onFinish()
     {
-        protected function onFinish()
-        {
-            dispatch(new NotifyUserOfCompletedExport($this->user, $this->url));
-        }
+        dispatch(new NotifyUserOfCompletedExport($this->user, $this->url));
     }
+}
 
 ```
 
