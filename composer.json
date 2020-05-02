@@ -1,0 +1,16 @@
+{
+    "name": "eithed/export-to-csv",
+    "description": "Laravel Nova action to export given view to CSV",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pawel Trauth",
+            "email": "pawel.trauth@digitalrisks.co.uk"
+        }
+    ],
+    "require": {
+        "laravel/nova": "~3.0.0",
+        "parsecsv/php-parsecsv": "~1.2.0"
+    }
+}
