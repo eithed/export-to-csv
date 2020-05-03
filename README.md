@@ -39,7 +39,7 @@ class ExportToCsv extends \Eithed\ExportToCsv\ExportToCsv
 {
     protected function onFinish()
     {
-        dispatch(new NotifyUserOfCompletedExport($this->user, $this->url));
+        dispatch(new NotifyUserOfCompletedExport($this->user, $this->path));
     }
 }
 
