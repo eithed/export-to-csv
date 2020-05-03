@@ -53,11 +53,11 @@ class ExportToCsv extends Action implements ShouldQueue
     protected function createCsv(Collection $lens_fields, Collection $models)
     {
         $csv = new Csv();
-        $csv->titles = $lens_fields->map(function ($field) {
+        $fields = $lens_fields->map(function ($field) {
             return $field->name;
         })->toArray();
 
-        $csv->data = $models->map(function ($model) use ($lens_fields) {
+        $data = $models->map(function ($model) use ($lens_fields) {
             return $lens_fields->map(function ($lens_field) use ($model) {
                 // have to clone lens field; otherwise, because resolve sets value on field
                 // we would be doing assignment via reference, and, if resolveForDisplay would return null
@@ -79,7 +79,12 @@ class ExportToCsv extends Action implements ShouldQueue
             mkdir($path, 0777, true);
         }
 
-        $csv->save($this->path, $csv->data, true);
+        // append fields as first row
+        if (!file_exists($this->path)) {
+            $csv->save($this->path, [$fields], true);
+        }
+
+        $csv->save($this->path, $data, true);
 
         return $csv;
     }
