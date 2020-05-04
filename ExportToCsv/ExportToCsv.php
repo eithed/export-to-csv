@@ -58,6 +58,9 @@ class ExportToCsv extends Action implements ShouldQueue
         })->toArray();
 
         $data = $models->map(function ($model) use ($lens_fields) {
+
+            $this->resource->resource = $model;
+            
             return $lens_fields->map(function ($lens_field) use ($model) {
                 // have to clone lens field; otherwise, because resolve sets value on field
                 // we would be doing assignment via reference, and, if resolveForDisplay would return null
